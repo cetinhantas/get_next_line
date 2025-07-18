@@ -6,7 +6,7 @@
 /*   By: chantas <chantas@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 18:45:53 by chantas           #+#    #+#             */
-/*   Updated: 2025/07/19 01:33:23 by chantas          ###   ########.fr       */
+/*   Updated: 2025/07/19 01:59:39 by chantas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 static void	find_line(char **buffer, char *temp, char **line, int fd)
 {
 	int	bytes;
+
 	while (1)
 	{
 		bytes = read(fd, temp, BUFFER_SIZE);
