@@ -6,7 +6,7 @@
 /*   By: chantas <chantas@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 17:40:36 by chantas           #+#    #+#             */
-/*   Updated: 2025/07/17 03:04:28 by chantas          ###   ########.fr       */
+/*   Updated: 2025/07/18 21:44:23 by chantas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,14 @@
 # include <unistd.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 64
+#  define BUFFER_SIZE 1
 # endif
 
 char	*get_next_line(int fd);
 size_t	ft_strlen(char *s);
 int		ft_strchr(char *s, int c);
 char	*ft_strjoin(char *s1, char *s2);
-char	*ft_substr(char *s, size_t len);
-char	*ft_strdup(char *s);
+char	*ft_substr(char *s, size_t start, size_t len);
+char	*ft_calloc(size_t size);
 
 #endif
