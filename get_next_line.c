@@ -6,35 +6,56 @@
 /*   By: chantas <chantas@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 18:45:53 by chantas           #+#    #+#             */
-/*   Updated: 2025/07/18 23:37:06 by chantas          ###   ########.fr       */
+/*   Updated: 2025/07/19 01:33:23 by chantas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <stdio.h>
 
-static void	*next_line(char **buffer, char *temp, char **line, int fd)
+static void	find_line(char **buffer, char *temp, char **line, int fd)
 {
-	int		i;
-	int		len;
-
+	int	bytes;
 	while (1)
 	{
-		if (!read(fd, temp, BUFFER_SIZE))
+		bytes = read(fd, temp, BUFFER_SIZE);
+		if (bytes <= 0)
 			break ;
 		*buffer = ft_strjoin(*buffer, temp);
 		if (ft_strchr(*buffer, '\n'))
 			break ;
 	}
+	free(temp);
+	if (!*buffer || !**buffer)
+	{
+		*line = NULL;
+		return ;
+	}
+	pass_line(buffer, line);
+}
+
+static void	pass_line(char **buffer, char **line)
+{
+	char	*tmp;
+	char	*linetmp;
+	int		i;
+	int		len;
+
 	i = ft_strchr(*buffer, '\n');
 	len = ft_strlen(*buffer);
 	if (i)
 	{
 		*line = ft_substr(*buffer, 0, i);
-		*buffer = ft_substr(*buffer, i, len - i);
+		tmp = ft_substr(*buffer, i, len - i);
+		free(*buffer);
+		*buffer = tmp;
 	}
 	else
-		*line = ft_substr(*buffer, 0, len);
+	{
+		linetmp = ft_substr(*buffer, 0, len);
+		free(*buffer);
+		*buffer = NULL;
+		*line = linetmp;
+	}
 }
 
 char	*get_next_line(int fd)
@@ -43,12 +64,18 @@ char	*get_next_line(int fd)
 	char		*line;
 	char		*temp;
 
-	line = NULL;
 	temp = ft_calloc(BUFFER_SIZE + 1);
 	if (!buffer)
 		buffer = ft_calloc(1);
 	if (fd < 0 || !temp || !buffer || read(fd, 0, 0) < 0)
 		return (NULL);
-	next_line(&buffer, temp, &line, fd);
+	find_line(&buffer, temp, &line, fd);
+	if (!line || !*line)
+	{
+		free(buffer);
+		buffer = NULL;
+		free(line);
+		return (NULL);
+	}
 	return (line);
 }
