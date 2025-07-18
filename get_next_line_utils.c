@@ -6,7 +6,7 @@
 /*   By: chantas <chantas@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 19:24:09 by chantas           #+#    #+#             */
-/*   Updated: 2025/07/18 17:06:11 by chantas          ###   ########.fr       */
+/*   Updated: 2025/07/18 18:01:09 by chantas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ size_t	ft_strlen(char *s)
 	size_t	i;
 
 	i = 0;
-	while (*s++)
+	while (s[i])
 		i++;
 	return (i);
 }
@@ -31,7 +31,7 @@ int	ft_strchr(char *s, int c)
 	{
 		if (s[i] == (unsigned char)c)
 			return (i + 1);
-		s++;
+		i++;
 	}
 	return (0);
 }
