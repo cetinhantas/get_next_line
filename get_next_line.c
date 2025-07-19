@@ -6,20 +6,20 @@
 /*   By: chantas <chantas@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 18:45:53 by chantas           #+#    #+#             */
-/*   Updated: 2025/07/19 01:59:39 by chantas          ###   ########.fr       */
+/*   Updated: 2025/07/19 17:22:45 by chantas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
+static void	pass_line(char **buffer, char **line);
+static void	find_line(char **buffer, char *temp, char **line, int fd);
+
 static void	find_line(char **buffer, char *temp, char **line, int fd)
 {
-	int	bytes;
-
 	while (1)
 	{
-		bytes = read(fd, temp, BUFFER_SIZE);
-		if (bytes <= 0)
+		if (read(fd, temp, BUFFER_SIZE) <= 0)
 			break ;
 		*buffer = ft_strjoin(*buffer, temp);
 		if (ft_strchr(*buffer, '\n'))

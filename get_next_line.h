@@ -6,7 +6,7 @@
 /*   By: chantas <chantas@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 17:40:36 by chantas           #+#    #+#             */
-/*   Updated: 2025/07/19 01:59:22 by chantas          ###   ########.fr       */
+/*   Updated: 2025/07/19 17:22:34 by chantas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,5 @@ int			ft_strchr(char *s, int c);
 char		*ft_strjoin(char *s1, char *s2);
 char		*ft_substr(char *s, size_t start, size_t len);
 char		*ft_calloc(size_t size);
-
-static void	pass_line(char **buffer, char **line);
-static void	find_line(char **buffer, char *temp, char **line, int fd);
 
 #endif
