@@ -6,11 +6,11 @@
 /*   By: chantas <chantas@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 18:45:53 by chantas           #+#    #+#             */
-/*   Updated: 2025/07/19 19:21:46 by chantas          ###   ########.fr       */
+/*   Updated: 2025/07/19 19:40:31 by chantas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 static void	pass_line(char **buffer, char **line)
 {
