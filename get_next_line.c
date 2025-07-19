@@ -6,7 +6,7 @@
 /*   By: chantas <chantas@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 18:45:53 by chantas           #+#    #+#             */
-/*   Updated: 2025/07/19 17:22:45 by chantas          ###   ########.fr       */
+/*   Updated: 2025/07/19 17:48:29 by chantas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ char	*get_next_line(int fd)
 	temp = ft_calloc(BUFFER_SIZE + 1);
 	if (!buffer)
 		buffer = ft_calloc(1);
-	if (fd < 0 || !temp || !buffer || read(fd, 0, 0) < 0)
+	if (fd < 0 || !temp || !buffer)
 		return (NULL);
 	find_line(&buffer, temp, &line, fd);
 	if (!line || !*line)
